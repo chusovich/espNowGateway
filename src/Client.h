@@ -12,7 +12,7 @@
 #include <freeRTOS_pp.h>
 #include <ArduinoJson.h>
 
-void espNowCallback(const uint8_t mac[WIFIESPNOW_ALEN], const uint8_t *buf, size_t count, void *arg);
+void espNowClientCallback(const uint8_t mac[WIFIESPNOW_ALEN], const uint8_t *buf, size_t count, void *arg);
 
 class EspNowClient {
 public:
