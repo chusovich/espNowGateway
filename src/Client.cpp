@@ -52,7 +52,7 @@ bool EspNowClient::begin() {
   if (!initBool) {
     return false;
   }
-  WifiEspNow.onReceive(espNowCallback, nullptr);
+  WifiEspNow.onReceive(espNowClientCallback, nullptr);
   WiFi.softAPmacAddress(_myMac);
   char msgBuf[245];
   JsonDocument doc;
