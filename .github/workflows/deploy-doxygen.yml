@@ -1,0 +1,38 @@
+name: Build and Deploy Doxygen
+on: [push]
+
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Checkout doxygen-awesome-css repo
+        uses: actions/checkout@v4
+        with:
+          repository: jothepro/doxygen-awesome-css
+          path: doxygen-awesome-css
+
+      - name: What is here?
+        run: ls
+        
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen
+
+      - name: Install Graphviz
+        run: sudo apt-get install graphviz
+       
+      - name: Create documentation
+        run: doxygen Doxyfile
+      
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 'docs/html' # The folder the action should deploy.
+          
+      - name: What is here?
+        run: ls
