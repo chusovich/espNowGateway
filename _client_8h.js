@@ -1,5 +1,5 @@
 var _client_8h =
 [
     [ "EspNowClient", "class_esp_now_client.html", "class_esp_now_client" ],
-    [ "espNowCallback", "_client_8h.html#ac57fb0e5cd4c1c427fd74cec20790f74", null ]
+    [ "espNowClientCallback", "_client_8h.html#a687021ef9bc37961e714d2baa602d2ff", null ]
 ];
