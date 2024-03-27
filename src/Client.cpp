@@ -2,7 +2,7 @@
 // globals
 Queue espNowQueue(25);
 
-void espNowCallback(const uint8_t mac[WIFIESPNOW_ALEN], const uint8_t* buf, size_t count, void* arg) {
+void espNowClientCallback(const uint8_t mac[WIFIESPNOW_ALEN], const uint8_t* buf, size_t count, void* arg) {
   JsonDocument doc;
   message_t cbMsg;
   char buffer[250];
