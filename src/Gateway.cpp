@@ -134,12 +134,12 @@ void EspNowGateway::forwardMessage(String topic, String payload) {
 
 void EspNowGateway::refresh() {
   JsonDocument jsonDoc;
-  jsonDoc["id"] = 2;
+  jsonDoc["id"] = 4;
   for (int i = 0; i < NUM_PEERS; i++) {
     for (int j = 0; j < NUM_TOPICS; j++) {
       if (myPeerList[i].topics[j].indexOf("/") != -1) {
         jsonDoc["topic"] = myPeerList[i].topics[j];
-        serializeJson(jsonDoc, Serial);
+        serializeJson(jsonDoc, Serial1);
         jsonDoc["topic"] = "";
       }
     }
