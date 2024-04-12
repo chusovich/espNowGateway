@@ -1,4 +1,25 @@
-#include "Client.h"
+/*!
+ * @file EspNowClient.cpp
+ *
+ * @page client_page Client
+ *
+ * @section intro_sec Introduction
+ * This is an esp-now client
+ *
+ * @section examples_sec Code Examples
+ * Here are some examples
+ * 
+ * @code
+ * void setup() {
+ *	 Serial.begin(9600);
+ *	 client.begin();
+ * }
+ * @endcode
+ *
+ */
+
+#include "EspNowClient.h"
+
 // globals
 Queue espNowQueue(25);
 
@@ -62,8 +83,8 @@ bool EspNowClient::begin() {
   doc["alias"] = _alias;
   doc["id"] = 3;
   serializeJson(doc, msgBuf);
-  Serial.printf("Sending msg: %s\n", msgBuf);
-  Serial.printf("Gatway MAC:%02X:%02X:%02X:%02X:%02X:%02X\n", _gtwMac[0], _gtwMac[1], _gtwMac[2], _gtwMac[3], _gtwMac[4], _gtwMac[5]);
+  // Serial.printf("Sending msg: %s\n", msgBuf);
+  // Serial.printf("Gatway MAC:%02X:%02X:%02X:%02X:%02X:%02X\n", _gtwMac[0], _gtwMac[1], _gtwMac[2], _gtwMac[3], _gtwMac[4], _gtwMac[5]);
   if (WifiEspNow.send(_gtwMac, reinterpret_cast<const uint8_t*>(msgBuf), strlen(msgBuf))) {
     return true;
   }
@@ -72,7 +93,7 @@ bool EspNowClient::begin() {
 
 bool EspNowClient::subscribe(const char* topic) {
   JsonDocument doc;
-  doc["id"] = 4;  // subscribe msg code
+  doc["id"] = 5;  // subscribe msg code
   for (int i = 0; i < 6; i++) {
     doc["mac"][i] = _myMac[i];
   }
@@ -104,7 +125,7 @@ bool EspNowClient::unsubscribe(const char* topic) {
 
 bool EspNowClient::publish(const char* topic, const char* payload) {
   JsonDocument doc;
-  doc["id"] = 5;  // publish msg code
+  doc["id"] = 4;  // publish msg code
   doc["topic"] = topic;
   doc["payload"] = payload;
   char msgBuf[250];
