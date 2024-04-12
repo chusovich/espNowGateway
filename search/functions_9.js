@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['refresh_49',['refresh',['../class_esp_now_gateway.html#aceca0201914c87b872d8f12b903df4f2',1,'EspNowGateway']]],
-  ['removepeer_50',['removePeer',['../class_esp_now_gateway.html#ab13c24891509aac8903638fe992c6308',1,'EspNowGateway']]]
+  ['subpeertotopic_51',['subPeerToTopic',['../class_esp_now_gateway.html#aaf9df62ca85493682395e393b777318c',1,'EspNowGateway']]],
+  ['subscribe_52',['subscribe',['../class_esp_now_client.html#ae4d6e5b951f34cd2ef40dd1cf680d2bd',1,'EspNowClient']]]
 ];
