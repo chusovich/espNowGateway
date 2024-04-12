@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['gateway_13',['Gateway',['../gtw_page.html',1,'']]],
-  ['gtwqueue_14',['gtwQueue',['../_esp_now_gateway_8cpp.html#a4a40f35eeb3fb4b8ea06d74016eb0882',1,'EspNowGateway.cpp']]]
+  ['forwardmessage_13',['forwardMessage',['../class_esp_now_gateway.html#a3becd51bc6e9a1775b90903668655c55',1,'EspNowGateway']]]
 ];

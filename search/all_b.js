@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unsubscribe_26',['unsubscribe',['../class_esp_now_client.html#a09e1bb7b1caf204a0b51b878f0b61ed4',1,'EspNowClient']]]
+  ['subpeertotopic_26',['subPeerToTopic',['../class_esp_now_gateway.html#aaf9df62ca85493682395e393b777318c',1,'EspNowGateway']]],
+  ['subscribe_27',['subscribe',['../class_esp_now_client.html#ae4d6e5b951f34cd2ef40dd1cf680d2bd',1,'EspNowClient']]]
 ];
