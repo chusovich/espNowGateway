@@ -74,10 +74,22 @@ bool EspNowGateway::begin() {
     @param  the mac address of the peer we want to add to our list
 */
 /**************************************************************************/
-void EspNowGateway::addPeer(uint8_t mac[6]) {
+bool EspNowGateway::addPeer(uint8_t mac[6]) {
   // open the file and close it, which will create it if it hasn't already been created
-  File peerFile = SPIFFS.open(macToFile(mac), FILE_WRITE);
+  char filename[FN_LEN];
+  snprintf(filename, sizeof(filename), "/%02X_%02X_%02X_%02X_%02X_%02X.txt",
+           mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]); 
+  // Serial.print("file name: ");
+  // Serial.println(filename);  
+  File peerFile = SPIFFS.open(filename, FILE_WRITE);
+  bool success;
+  if (!peerFile) {
+	success = false;
+  } else {
+	success = true;
+  }
   peerFile.close();
+  return success;
 }
 
 /**************************************************************************/
@@ -91,7 +103,9 @@ void EspNowGateway::subPeerToTopic(uint8_t mac[6], const char* topic) {
   // append our json object to the end of the peer's file
   if (!checkPeerForTopic(mac, topic)) {
     // append to file
-    File jsonlFile = SPIFFS.open(macToFile(mac), FILE_WRITE);
+	char filename[FN_LEN];
+  snprintf(filename, sizeof(filename), "/%02X_%02X_%02X_%02X_%02X_%02X.txt",
+           mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);    File jsonlFile = SPIFFS.open(filename, FILE_WRITE);
     JsonDocument doc;
     doc["topic"] = topic;
     serializeJson(doc, jsonlFile);
@@ -162,7 +176,10 @@ void EspNowGateway::refresh(Queue* queue) {
 }
 
 void EspNowGateway::removePeer(uint8_t mac[6], Queue* queue) {
-  File peerFile = SPIFFS.open(macToFile(mac), FILE_READ);
+  char filename[FN_LEN];
+  snprintf(filename, sizeof(filename), "/%02X_%02X_%02X_%02X_%02X_%02X.txt",
+           mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);  
+  File peerFile = SPIFFS.open(filename, FILE_READ);
   if (peerFile) {
     while (true) {  // loop for each topic in the peer file
       JsonDocument fileDoc;
@@ -177,12 +194,15 @@ void EspNowGateway::removePeer(uint8_t mac[6], Queue* queue) {
       queue->enqueue(msg, 500);
     }
     // delete the peer file so we will no longer forward messages
-    SPIFFS.remove(macToFile(mac));
+    SPIFFS.remove(filename);
   }
 }
 
 bool EspNowGateway::checkPeerForTopic(uint8_t mac[6], const char* topic) {
-  File peerFile = SPIFFS.open(macToFile(mac), FILE_READ);
+  char filename[FN_LEN];
+  snprintf(filename, sizeof(filename), "/%02X_%02X_%02X_%02X_%02X_%02X.txt",
+           mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+  File peerFile = SPIFFS.open(filename, FILE_READ);
   if (peerFile) {
     while (true) {  // loop for each topic in the peer file
       JsonDocument fileDoc;
@@ -197,13 +217,6 @@ bool EspNowGateway::checkPeerForTopic(uint8_t mac[6], const char* topic) {
     peerFile.close();
   }
   return false;
-}
-
-const char* EspNowGateway::macToFile(uint8_t mac[6]) {
-  char fileName[23];
-  snprintf(fileName, sizeof(fileName), "/%02X_%02X_%02X_%02X_%02X_%02X.txt",
-           mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
-  return fileName;
 }
 
 /**************************************************************************/
