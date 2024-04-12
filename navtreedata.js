@@ -26,8 +26,11 @@ var NAVTREE =
 [
   [ "ESP-NOW Gateway", "index.html", [
     [ "espNowGtw", "index.html", null ],
+    [ "Gateway", "gtw_page.html", [
+      [ "Introduction", "gtw_page.html#intro_sec", null ],
+      [ "Code Examples", "gtw_page.html#examples_sec", null ]
+    ] ],
     [ "Overview", "_overview.html", [
-      [ "Introduction", "_overview.html#intro_sec", null ],
       [ "Dependencies", "_overview.html#dependencies", null ],
       [ "Author", "_overview.html#author", null ],
       [ "License", "_overview.html#license", null ]
@@ -46,8 +49,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Variables", "globals_vars.html", null ]
       ] ]
     ] ]
   ] ]
@@ -55,7 +57,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_client_8cpp.html"
+"_esp_now_client_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

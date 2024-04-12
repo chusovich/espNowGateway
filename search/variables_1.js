@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mac_60',['mac',['../struct_peer_data.html#a8f60528d3c6a3094b29a32d2b0634e78',1,'PeerData']]],
-  ['macaddress_61',['macAddress',['../class_esp_now_gateway.html#aef39f84f6ed42be2ac4cb4b6e46ba1b0',1,'EspNowGateway']]],
-  ['mypeerlist_62',['myPeerList',['../_gateway_8cpp.html#af7df00e47c90edf1b5a7d9fa110c9105',1,'Gateway.cpp']]]
+  ['peeraliasfile_51',['peerAliasFile',['../_esp_now_gateway_8cpp.html#aa774875e1538364f5bea98ee540cc770',1,'EspNowGateway.cpp']]],
+  ['peertopicfile_52',['peerTopicFile',['../_esp_now_gateway_8cpp.html#a8d48d64fd24b8653c558cd21970b51c7',1,'EspNowGateway.cpp']]]
 ];
