@@ -24,7 +24,6 @@ public:
   bool peek(message_t* msgPtr);
   // data
   const char* macAddress;
-private:
   bool checkPeerForTopic(uint8_t mac[6], const char* topic);
   const char* macToFile(uint8_t mac[6]);
 };
